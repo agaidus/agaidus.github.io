@@ -6,7 +6,7 @@ title: The Hilliest Muni Route in San Francisco
 
 ## Introduction
 
-I ride SF Muni almost every day and often think about the characteristics of different bus routes - when they are busiest, who rides them and for what purposes, what neighborhoods do they go through, etc. I was excited to see that the Metropolitan Transportation Commission releases GIS data of all transit routes in the Bay Area. There are tons of really interesting and important ways that this can be analyzed. In this post here I use the transit route data along with a datset of elevation contour lines to answer a ver simple question: What is the hilliest Muni line in the city? (spoiler alert: it's not a bus). I also use a few other publically available spatial datasets (streets and neighborhood boundaries) to create some interesting plots that help to visualize the bus routes and their elevation profiles.  The following analysis is all done using open source spatial tools in Python. The IPython notebook with all the code I used for this analysis can be found [here](https://github.com/agaidus/SF_Muni_Elevation/blob/master/SF%20Muni%20-%20Elevation%20Profiles.ipynb).
+I ride SF Muni almost every day and often think about the characteristics of different bus routes - when they are busiest, who rides them and for what purposes, what neighborhoods do they go through, etc. I was excited to see that the Metropolitan Transportation Commission releases GIS data of all transit routes in the Bay Area. There are tons of really interesting and important ways that this can be analyzed. In this post here I use the transit route data along with a datset of elevation contour lines to answer a ver simple question: What is the hilliest Muni line in the city? (spoiler alert: it's not a bus). I also use a few other publically available spatial datasets (streets and neighborhood boundaries) to create some interesting plots of elevation profiles that help to visualize the bus routes. The following analysis is all done using open source spatial tools in Python. An IPython notebook with all my code can be found [here](https://github.com/agaidus/SF_Muni_Elevation/blob/master/SF%20Muni%20-%20Elevation%20Profiles.ipynb).
 
 ## Muni Data
 Bay Area transportation routes were downloaded from the MTC website from which Muni lines were selected out from the entire set of Bay Area transportation. After a little more clean-up I get the following dataframe which contains a ```shapely``` geometry object for each in-bound and out-bound Muni route in the city. The geometry objects are displayed in well-known text format, and are a just a way of mapping and analyzing vector geometry.
@@ -27,7 +27,7 @@ Bay Area transportation routes were downloaded from the MTC website from which M
 
 
 ## Elevation Data
-Contour lines were downloaded as a shapefile from the San Francisco open data portal. Like the Muni lines I read the contours into a dataframe. Each record joins points of equal elevation and contains the elevation value (feet above sea level) as well as a geometry object. Plotting these and symbolizing by elevation value shows that the center of the city, which contains Mt. Sutro, Twin Peaks, and Mt. Davidson is at a much higher elevation than the rest of the city.
+Contour lines were downloaded as a shapefile from the San Francisco [open data portal](https://data.sfgov.org/). Like the Muni lines I read the contours into a dataframe. Each record joins points of equal elevation and contains the elevation value (feet above sea level) as well as a geometry object. Plotting these and symbolizing by elevation value shows that the center of the city, which contains Mt. Sutro, Twin Peaks, and Mt. Davidson is at a much higher elevation than the rest of the city.
 
 ![png]({{ site.baseurl }}/images/SF%20Muni%20-%20Elevation%20Profiles-Copy1_15_1.png)
 
@@ -38,7 +38,7 @@ Overlaying bus routes and contour lines allows me to calculate stats on the elev
 
 I write a function that first aggregates together in-bound and out-bound routes, and then calculates for a particular bus-line in its entirety, the total elevation change. Then by applying this function to the entire set of Muni routes, I can compare the relative hilliness of a route. In order to appropriately make this comparison, I divide the total elevation change by the length to calculate feet of elevation change per mile.
 
-The top 5 hilliest routes are shown below with feet of elevation change per mile. No surprise is the fact that 3 of the top 5 are the notoriously steep cable car routes that run over Nob Hill. The 35 and 36 bus lines both run through the center of the city along the side of Mt Sutro and Twin Peaks, so it's no surpise to see them on that list as well.
+The top 5 hilliest routes are shown below with feet of elevation change per mile. No surprise is the fact that 3 of the top 5 are the notoriously steep cable car routes that run over Nob Hill. The 35 and 36 bus lines both run through the center of the city along the eastern and western sides of Twin Peaks, so they both cover some hilly terrain as well.
 
     Name
     POWELL-HYDE     421.212388
@@ -52,7 +52,7 @@ The top 5 hilliest routes are shown below with feet of elevation change per mile
 
 ## Plotting Bus Route Neighborhood Composition
 
-The next step I take is to look at San Francisco neighborhood boundaries to see what neighborhoods that bus routes pass through at what points as another piece of information that can be included on the elevation profiles. I download a neighborhood boundary shapefile from the city open data portal and read it into a dataframe, which I plot below.
+The next step I take is to look at San Francisco neighborhood boundaries to see which neighborhoods bus routes pass through at what points along their route. This will be used as another piece of information that can be included on the elevation profile plots. I download a neighborhood boundary shapefile from the city open data portal and read it into a dataframe, which I plot below.
 
 ![png]({{ site.baseurl }}/images/SF%20Muni%20-%20Elevation%20Profiles_30_0.png)
 
@@ -67,7 +67,7 @@ I write a function that intersects buslines with neighborhoods and calculates fo
     Financial District       11029.476944
     Name: start_distance, dtype: float64
 
-This function also allows me to plot the proportion of a bus route's length spent in each neighborhood. I run this on the 38 inbound below. As you can see, this bus spends nearly half of its route in the Richmond district (inner + outer). 
+This function also produces the information needed to plot the proportion of a bus route's length spent in each neighborhood. I run this on the 38 inbound below. As you can see, this bus spends nearly half of its route in the Richmond District (Inner + Outer). 
 
 ![png]({{ site.baseurl }}/images/SF%20Muni%20-%20Elevation%20Profiles_38_0.png)
 
@@ -105,7 +105,7 @@ This algorithm identifies the nearest cross-street as being Presidio, which is a
 By simply appylying this function to the maximum and minimum elevation points (instead of the half-way point as I did in this example) I can get that last piece of info that I want to include in the elevvation profile plots.
 
 ## Final Elevation Profile Plots
-Now by pulling all of these functions and data together, I write a final plotting function that takes as its input the name of a Muni route name and direction, plots the elevation profile, indicates the point along the route at which the bus line switches neighborhoods, and marks the point of max and min elevation along with the elevation and the cross-street at those points. I also calculate the total elevation change per mile and include that in the plot title. Below I apply it to a few of my most commonly used buses as well as the routes with the largest and smallest elevation gains. 
+Now by pulling all of these functions and data together, I write a final plotting function that takes as its input the name of a Muni route name and direction, plots the elevation profile, indicates the point along the route at which the bus line switches neighborhoods, and marks the point of max and min elevation along with the elevation and the cross-street at those points. I also calculate the total elevation change per mile and include that in the plot title. Below I apply it to a few of my most commonly used Muni lines as well as the routes with the largest and smallest elevation gains. 
 
 
 ![png]({{ site.baseurl }}/images/SF%20Muni%20-%20Elevation%20Profiles_57_0.png)
