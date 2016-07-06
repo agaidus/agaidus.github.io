@@ -9,7 +9,7 @@ Some information about you!
 
 ### More Information
 
-Fill this in 
+[Resume](/images/Gaidus_Resume.pdf)
 
 ### Contact me
 
