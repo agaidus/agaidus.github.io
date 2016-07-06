@@ -6,7 +6,7 @@ title: The Hilliest Muni Route in San Francisco
 
 ## Introduction
 
-I ride SF Muni almost every day and often think about the characteristics of different bus routes: when they are busiest, who rides them and why, what neighborhoods they pass through, etc. Being a spatial data person by trade, I was excited to find that the Metropolitan Transportation Commission releases GIS data for all transit routes in the Bay Area and thought it would be fun to use the MTC data in conjunction with a dataset of elevation contour lines to answer a very simple question: What is the hilliest Muni line in the city? (spoiler alert: it’s not a bus). I also used a few other publicly available spatial datasets (streets and neighborhood boundaries) to create some interesting plots of elevation profiles that help to visualize the bus routes. The following analysis is all done using open source spatial tools in Python. An IPython notebook with all my code can be found [here](https://github.com/agaidus/SF_Muni_Elevation/blob/master/SF%20Muni%20-%20Elevation%20Profiles.ipynb).
+I ride SF Muni almost every day and often think about the characteristics of different bus routes: when they are busiest, who rides them and for what purpose, what neighborhoods they pass through, etc. Being a spatial data analyst by trade, I was excited to find that the Metropolitan Transportation Commission releases GIS data for all transit routes in the Bay Area and thought it would be fun to use the MTC data in conjunction with a dataset of elevation contour lines to answer a very simple question: What is the hilliest Muni line in the city? (spoiler alert: it’s not a bus). I also used a few other publicly available spatial datasets (streets and neighborhood boundaries) to create some interesting plots of elevation profiles that help to visualize the bus routes. The following analysis is all done using open source spatial tools in Python. An IPython notebook with my code can be found [here](https://github.com/agaidus/SF_Muni_Elevation/blob/master/SF%20Muni%20-%20Elevation%20Profiles.ipynb).
 
 ## Muni Data
 
@@ -53,7 +53,7 @@ The top 5 hilliest routes are shown below, with feet of elevation change per mil
 
 ## Plotting Bus Route Neighborhood Composition
 
-Next, I wanted to see which neighborhoods bus routes passed through and at what points along their route. I thought it would be interesting to include this information in my in my finalized elevation profile plots. 
+Next, I wanted to see which neighborhoods the bus routes pass through and at what points along their routes. I thought it would be interesting to include this information in my finalized elevation profile plots. 
 I downloaded a neighborhood boundary shapefile from the city open data portal and read it into a dataframe, which I plot below.
 
 ![png]({{ site.baseurl }}/images/SF%20Muni%20-%20Elevation%20Profiles_30_0.png)
@@ -127,3 +127,5 @@ Below I apply it to a few of my most commonly used Muni lines as well as the rou
 
 
 ![png]({{ site.baseurl }}/images/SF%20Muni%20-%20Elevation%20Profiles_61_0.png)
+
+And that's it! I found this to be a really interesting exercise both in terms of the subject matter and the tools and steps required to make it happen. I hope you found it useful as well!
