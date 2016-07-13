@@ -178,13 +178,6 @@ zip_x_cnty_area.name='Area'
 zip_x_cnty_area.head()
 ```
 
-    TopologyException: found non-noded intersection between LINESTRING (-158599 106557, -158607 106583) and LINESTRING (-158607 106583, -158590 106496) at -158606.67448376215 106583.21282431821
-    ERROR:shapely.geos:TopologyException: found non-noded intersection between LINESTRING (-158599 106557, -158607 106583) and LINESTRING (-158607 106583, -158590 106496) at -158606.67448376215 106583.21282431821
-    
-
-
-
-
     Zipcode  FIPS 
     12       06035    0.994439
              06063    0.005561
