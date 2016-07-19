@@ -3,8 +3,6 @@ layout: post
 title: Editing Geographic Features in Python
 ---
 
-## Introduction
-
 One major benefit that I find working in Python for spatial analyses is the ability to create, customize, and define tools that are very specific to the required spatial or analytical task. Rather than being constrained to the set of tools defined by a GIS software, when working in Python I can create a function that's very specific to the task of a given project. 
 
 I recently had a request from a colleague that required some editing and manipulation of geographic features in order to achieve the desired output. Essentially, we needed to divide the city of Berkeley into two geographic areas separated by a street, which does not extend the entire length of the city boundary (the area East of Sacramento Street was to be one sample area and the area West of Sacramento street was to be another sample area).
@@ -14,6 +12,9 @@ While this could certainly be done in ArcMap, I couldn't think of an elegant way
 I can certainly think of some cases in which these tools might not work. However, the beauty of doing GIS this way is that these tools and functions can be adapted or generalized to work in pretty much any situation. Additionally, I apply them to just 1 road in 1 city. They can easily be applied to a dataset as a whole to ensure that all features conform to a certain set of topological rules.
 
 Anyway, in the following example, I read in city boundary and street files (downloaded as GeoJSON files from the City of Berkeley Open Data Portal) as Shapely geometry objects. I write a few functions using built in Shapely operations to clean up the geometry and then go ahead and divide Berkeley in two. All of the geometric manipulation will be done on the street file, not the city boundary. The crux of the issue is that before I can use the street to divide the city, I will need a polyline that runs continuously to and touches the city boundary at two points.
+
+A Jupyter notebook containing my code can be downloaded [here](https://github.com/agaidus/Shapely_Geometries_Topological_Rules/blob/master/Shapely_Geometries_Topological_Rules.ipynb).
+
 
 ## Reading in the City Boundary and Street Files
 First I need to import the necessary modules. I am basically using ```shapely``` for all of the geometric / analytical work, ```geopandas``` for storting shapely geometries, ```math``` for some basic mathematical functions, ```matplotlib``` for plotting, and ```itertools``` to efficiently iterate through road segment geometries.

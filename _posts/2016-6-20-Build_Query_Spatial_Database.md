@@ -3,13 +3,13 @@ layout: post
 title: Querying PostgreSQL / PostGIS Databases in Python
 ---
 
-### Introduction and Spatial Database Background
-
-In the following notebook, I show how to build a PostgreSQL relational database with the PostGIS extension that supports spatial databases. I'll use the ```psycopg2``` Python module to access the database and import data, manipulate data, make a query, and then extract the data. I do a lot of data wrangling, analysis, and visualization using Python and find it really nice and efficient to be able to access and query SQL databases within the same environment!
+In the following post, I show how to build a PostgreSQL relational database with the PostGIS extension that supports spatial databases. I'll use the ```psycopg2``` Python module to access the database and import data, manipulate data, make a query, and then extract the data. I do a lot of data wrangling, analysis, and visualization using Python and find it really nice and efficient to be able to access and query SQL databases within the same environment!
 
 In this example I will perform simple spatial query. This methodology is much more efficient with large datasets than using ```Shapely``` or ```Geopandas``` to make spatial queries because the entire dataset does not have to be loaded into memory and the entire dataset does not need to be searched when a spatial query is made. Spatial databases uses spatial indices to optimize spatial queries. A spatial index is efficient because rather than indexing the geometry directly, it calculates the minimum bounding rectangle for each geometry, and indexes that bounding box. When a query is made, the database first identifies the potentially matching records using the bounding rectangles stored in the spatial index and then loads each potential geometry into memory to check it.
 
-In this example I populate a database with the contents from a shapefile of census blocks in San Francisco and then query those blocks that have non-zero population values and their centroid within the Inner Richmond neighborhood in San Francisco. I then extract the results of this query into a GeoPandas dataframe.
+In this example I populate a database with the contents from a shapefile of census blocks in San Francisco and then query those blocks that have non-zero population values and their centroid within the Inner Richmond neighborhood in San Francisco. I then extract the results of this query into a GeoPandas dataframe. 
+
+A Jupyter notebook containing my code can be downloaded on my github [here](https://github.com/agaidus/PostgreSQL_PostGIS_Databases_Python/blob/master/Build_Query_Spatial_Database.ipynb).
 
 ### Installing PostgreSQL with PostGIS Extension
 The first step is to get PostgreSQL and the PostGIS extension installed. Windows versions of PostgreSQL can be downloaded here: http://www.enterprisedb.com/products-services-training/pgdownload#windows

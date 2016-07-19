@@ -1,6 +1,6 @@
 ---
 layout: post
-title: CA County Urban Populations from Zip Classifications
+title: County Urban Populations from Zip Classifications
 ---
 
 I have a shapefile of California zip codes and a shapefile of California counties. I am given a set of rules that use housing unit density to classify zip codes into rural, urban, or exurban zip codes. The goal is to calculate the proportion of each county's population that lives within each of these zip code classifications.
