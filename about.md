@@ -8,7 +8,7 @@ published: true
 Some information about you!
 
 ### More Information
-
+test
 [Resume](/images/Gaidus_Resume.pdf)
 
 ### Contact me
