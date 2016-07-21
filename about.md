@@ -12,7 +12,7 @@ I currently work at a national public health research institute where I manage l
 On the weekends, I can generally be found in the Sierra Nevada camping, climbing, running, and hiking. 
 
 ## Motivation for this site
-Being both a 'data scientist' and a 'GIS analyst', I initially found myself working in two disconnected worlds. Like most GIS professionals, I was trained in desktop GIS, specifically ArcMap. I first learned Python through the use of the ArcPy module to link together geoprocessing tasks. In a typical data science project, I would use ArcPy/ArcGIS for spatial aspects and the SciPy stack of Python libraries for the non-spatial data wrangling and analysis. I think there's a better approach.
+Being both a 'data scientist' and a 'GIS analyst', I initially found myself working in two disconnected worlds. Like most GIS professionals, I was trained in ArcGIS. In a typical data science project, I would use ArcPy for the spatial aspects and the SciPy stack of Python libraries for the non-spatial data wrangling and analysis. I think there is a better approach that offers a more seamless integration between these two worlds. 
 
 Somewhere along the way, I discovered the set of open source spatial libraries in Python - Fiona, Shapely, pyproj, GeoPandas, PySAL - and my work instantly became more efficient and my overall understanding of GIS concepts much richer. ArcPy and other desktop GIS applications are wonderful for doing GIS. However, for the person who is simulatenously doing spatial and non-spatial data analysis, I think that there are a number of advantages to using SciPy along with the set of open source spatial libraries:
 
