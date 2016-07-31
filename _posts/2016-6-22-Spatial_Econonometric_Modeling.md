@@ -2,7 +2,7 @@
 layout: post
 title: Modeling San Francisco Crime Rates - A Spatial Econometric Approach
 ---
-In the following post, I walk through the steps required to build, evaluate, and interpret spatial regression models in Python. I'll point out that this post ended up being a LOT longer than I initially thought it would be and I applaud anyone who gets through it. However, it turned out to be a really useful exercise for me, helping me flush out all of these concepts and methods. I hope it's beneficial to someone else as well!
+In the following post, I walk through the steps required to build, evaluate, and interpret spatial regression models in Python. I'll point out that this post ended up being a lot longer than I initially thought it would be. However, it turned out to be a really useful exercise for me in keeping these methods and tools straight in my head. I hope it's beneficial to someone else as well!
 
 I start with some background on maximum likelihood spatial regression models and then use the Python library ```pysal``` to implement them. Based on the data I found freely available, I have decided to do an analysis of crime rates within block groups in San Francisco. More specifically, I look to see if police incidents related to "drunkenness" (an official crime category in the SF Police data) occur at a higher rate in areas that have a higher density of bars. This is not unlike the types of analyses I have produced for co-authored [papers](https://www.researchgate.net/profile/Andrew_Gaidus), although the models presented here are simpler in that they build directly off of the standard OLS regression.
 
@@ -16,7 +16,6 @@ Secondly, the types of models that I am considering are only one class of spatia
 
 And lastly, there could be issues with the underlying question that I'm asking, having to do with that fact that I have actually no idea what a "drunkeness" incident really is. I'm choosing to not worry about this as I'm primarily interested in showing the statistical processes rather than offer any practical evaluation of crime in San Francisco. Nonetheless, I think it'd be interesting to see if this relationship that makes somewhat intuitive sense will actually manifest itself in the police data.
 
-
 ## Spatial Regression Background
 
 The class of spatial regression models I'm covering is a subset of regression models that deals with two main types of spatial patterns - spatial autocorrelation and spatial heterogeneity. There are two basic types of spatial regression models, each of which addresses one of these types of spatial patterns (Lesage and Pace, 2009) 
@@ -25,19 +24,21 @@ The class of spatial regression models I'm covering is a subset of regression mo
 The spatial lag model primarily addresses spatial autocorrelation. Spatial autocorrelation, in this context, refers to the case when our dependent variable exhibits a non-random pattern over our spatial units after controlling for other covariates. Positive autocorrelation  reflects value similarity in space, and negative autocorrelation reflects value dissimilarity in space. The mechanism here is that the outcome measure itself exhibits some force (either one of attraction or repulsion) on the outcome measure of nearby units.
 
 The spatial lag model takes the same approach that temporal autoregressive models take, except rather than including a temporal lag of the dependent variable as a predictor, it includes a spatial lag of the dependent variable (average value in neighboring units). The idea here is that the outcome in a given block group will depend not only on the characteristics of that block group, but also on the outcome in adjacent block groups. The spatial lag model looks just like the standard OLS model with an added autoregressive term: 
-$$Y = \rho W_Y + X \beta + \epsilon $$
 
-$Y$ is the outcome measure, $\rho$ is a spatial autoregressive term $W_Y$ is the spatial lag of the dependent variable, $X$ is the matrix of explanatory variables, and $\epsilon$ is a vector of error terms assumed as $\epsilon \sim N(0,\sigma^2 I)$
+![equation](http://latex.codecogs.com/gif.latex?y=\rho W_Y+X\beta+\epsilon) 
+
+![equation](http://latex.codecogs.com/gif.latex?Y) is the outcome measure, ![equation](http://latex.codecogs.com/gif.latex?\rho) is a spatial autoregressive term ![equation](http://latex.codecogs.com/gif.latex?W_Y) is the spatial lag of the dependent variable, ![equation](http://latex.codecogs.com/gif.latex?X) is the matrix of explanatory variables, and ![equation](http://latex.codecogs.com/gif.latex?\epsilon) is a vector of error terms assumed as ![equation](http://latex.codecogs.com/gif.latex?\epsilon \sim N(0,\sigma^2 I))
 
 ### Spatial Error Model
 The spatial error model primarily addresses spatial heterogeneity, or spatial interactions in the model that are a result of omitted variables that are spatially autocorrelated. It also looks like the standard OLS regression although now the error term is parased apart into a spatial component and a non-spatial component.
 
-$$Y = X \beta + \epsilon $$
+![equation](http://latex.codecogs.com/gif.latex?Y = X \beta + \epsilon)
 
-$$\epsilon = \lambda W \epsilon + \mu$$
-$$\mu \sim N(0,\sigma^2 I)$$
+![equation](http://latex.codecogs.com/gif.latex?\epsilon = \lambda W \epsilon + \mu)
 
-$\lambda$ is the spatial autogregresive term, $W$ is the adjacency matrix, and $\mu$ is the non-spatial, random error component.
+![equation](http://latex.codecogs.com/gif.latex?\mu \sim N(0,\sigma^2 I))
+
+![equation](http://latex.codecogs.com/gif.latex?\lambda) is the spatial autogregresive term, ![equation](http://latex.codecogs.com/gif.latex?W) is the adjacency matrix, and ![equation](http://latex.codecogs.com/gif.latex?\mu) is the non-spatial, random error component.
 
 Generally, data does not fall neatly into one of these two categories and can possess spatial autoregressive properties both in the outcome measure and in the error terms. Fortunately, there are lagrange multiplier tests that can help us determine which form of autoregression is of primary concern and which model would be most appropriate.
 
