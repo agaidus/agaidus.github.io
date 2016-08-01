@@ -12,7 +12,7 @@ I'm going to start from the point of already having built the dataset. However, 
 
 Before I start, I do want to point out some caveats and offer some words of caution. Firstly, these are far from finished statistical models. I'm using them as an example of how to deal with issues that arise when modeling spatial data, and have thus chosen not to consider other non-spatial issues that could potentially bias the results - heteroskedasticity, non-linear relationships, etc. 
 
-Secondly, the types of models that I am considering are only one class of spatial econometric models. There are much more advanced ways of modeling spatial data that such as conditional autoregressive models, Bayesian spatial models, non-linear spatial models, etc. This, however, is outside of the scope of this introductory analysis. Lesage and Pace, 2009 provides a great overview of these different types of models. Also, [this](https://www.researchgate.net/publication/289672205_A_Micro-Temporal_Geospatial_Analysis_of_Medical_Marijuana_Dispensaries_and_Crime_in_Long_Beach_California) paper that I co-authored, also makes use of a more robust non-linear Bayesian space-time model to answer a similar type of question, if that is of interest.
+Secondly, the types of models that I am considering are only one class of spatial econometric models. There are much more advanced ways of modeling spatial data such as conditional autoregressive models, Bayesian spatial models, non-linear spatial models, etc. This, however, is outside of the scope of this introductory analysis. Lesage and Pace, 2009 provides a great overview of these different types of models. Also, [this](https://www.researchgate.net/publication/289672205_A_Micro-Temporal_Geospatial_Analysis_of_Medical_Marijuana_Dispensaries_and_Crime_in_Long_Beach_California) paper that I co-authored, also makes use of a more robust non-linear Bayesian space-time model to answer a similar type of question, if that is of interest.
 
 And lastly, there could be issues with the underlying question that I'm asking, having to do with that fact that I have actually no idea what a "drunkeness" incident really is. I'm choosing to not worry about this as I'm primarily interested in showing the statistical processes rather than offer any practical evaluation of crime in San Francisco. Nonetheless, I think it'd be interesting to see if this relationship that makes somewhat intuitive sense will actually manifest itself in the police data.
 
@@ -38,7 +38,7 @@ The spatial error model primarily addresses spatial heterogeneity, or spatial in
 
 ![equation](http://latex.codecogs.com/gif.latex?\mu \sim N(0,\sigma^2 I))
 
-![equation](http://latex.codecogs.com/gif.latex?\lambda) is the spatial autogregresive term, ![equation](http://latex.codecogs.com/gif.latex?W) is the adjacency matrix, and ![equation](http://latex.codecogs.com/gif.latex?\mu) is the non-spatial, random error component.
+![equation](http://latex.codecogs.com/gif.latex?\lambda) is the spatial autoregressive term, ![equation](http://latex.codecogs.com/gif.latex?W) is the adjacency matrix, and ![equation](http://latex.codecogs.com/gif.latex?\mu) is the non-spatial, random error component.
 
 Generally, data does not fall neatly into one of these two categories and can possess spatial autoregressive properties both in the outcome measure and in the error terms. Fortunately, there are lagrange multiplier tests that can help us determine which form of autoregression is of primary concern and which model would be most appropriate.
 
