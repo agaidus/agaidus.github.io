@@ -30,7 +30,7 @@ The spatial lag model takes the same approach that temporal autoregressive model
 ![equation](http://latex.codecogs.com/gif.latex?Y) is the outcome measure, ![equation](http://latex.codecogs.com/gif.latex?\rho) is a spatial autoregressive term ![equation](http://latex.codecogs.com/gif.latex?W_Y) is the spatial lag of the dependent variable, ![equation](http://latex.codecogs.com/gif.latex?X) is the matrix of explanatory variables, and ![equation](http://latex.codecogs.com/gif.latex?\epsilon) is a vector of error terms assumed as ![equation](http://latex.codecogs.com/gif.latex?\epsilon \sim N(0,\sigma^2 I))
 
 ### Spatial Error Model
-The spatial error model primarily addresses spatial heterogeneity, or spatial interactions in the model that are a result of omitted variables that are spatially autocorrelated. It also looks like the standard OLS regression although now the error term is parased apart into a spatial component and a non-spatial component.
+The spatial error model primarily addresses spatial heterogeneity, or spatial interactions in the model that are a result of omitted variables that are spatially autocorrelated. It also looks like the standard OLS regression although now the error term is parsed apart into a spatial component and a non-spatial component.
 
 ![equation](http://latex.codecogs.com/gif.latex?Y = X \beta + \epsilon)
 
@@ -90,7 +90,7 @@ queen_w=ps.queen_from_shapefile('Data/SF_BlockGroups10.shp', 'BGFIPS10')
     Island id:  [576]
     
 
-In the example below, I extract block group 060750103003 and show that it has 4 rook neighbors and 7 queen neighbors. Queen contiguity distance weights are probably the most common weights matrices used in these types of analyses, and will be what I chose to use going forward.
+In the example below, I extract block group 060750103003 and show that it has 4 rook neighbors and 7 queen neighbors. Queen contiguity distance weights are probably the most common weights matrices used in these types of analyses, and will be what I choose to use going forward.
 
 
 ```python
@@ -150,7 +150,7 @@ title=plt.title('Farallon Islands: BG with 0 Neighbors')
 ![png]({{ site.baseurl }}/images/3-Spatial_Econonometric_Modeling_11_0.png)
 
 
-From the histogram you can also see that there is a huge outlier - a block group that has 35 neighbors. I must say, I was initially very confused by this, although after some futher exploration it became quite clear: Golden Gate Park! I plot this block group below along with its many adjacent block groups. Golden Gate Park, too, is not your typical area within San Francisco, and will likely cause some weird results in this analysis since it has 0 people, yet still plenty of crime. I go ahead and remove the Farallon Islands and Golden Gate Park from the dataset.
+From the histogram you can also see that there is a huge outlier - a block group that has 35 neighbors. I must say, I was initially very confused by this, although after some further exploration it became quite clear: Golden Gate Park! I plot this block group below along with its many adjacent block groups. Golden Gate Park, too, is not your typical area within San Francisco, and will likely cause some weird results in this analysis since it has 0 people, yet still plenty of crime. I go ahead and remove the Farallon Islands and Golden Gate Park from the dataset.
 
 
 ```python
@@ -178,7 +178,7 @@ title=plt.title('Golden Gate Park Neighboring Block Groups')
 ![png]({{ site.baseurl }}/images/3-Spatial_Econonometric_Modeling_14_0.png)
 
 
-And while I'm removing unusual block groups from the analysis, there is one more odd ball that I noticed and will remove. Evidently there is one block group that is a multipart geometry made of 10 different polygons. This one block group represents all of the islands in the San Francisco Bay (Alcatraz, Angel Island, Treasure Island, Yerba Buena Island) as well as some of the piers along Embarcadero. Because the piers along Embarcadero do have neighbors, this block group does not show up as being an 'island' in our adjaceny matrix. Given that this block group encompasses such a wide range of places, some of which have true neighbors and some of which do not, I will also drop it from the study.
+And while I'm removing unusual block groups from the analysis, there is one more odd ball that I noticed and will remove. Evidently there is one block group that is a multipart geometry made of 10 different polygons. This one block group represents all of the islands in the San Francisco Bay (Alcatraz, Angel Island, Treasure Island, Yerba Buena Island) as well as some of the piers along Embarcadero. Because the piers along Embarcadero do have neighbors, this block group does not show up as being an 'island' in our adjacency matrix. Given that this block group encompasses such a wide range of places, some of which have true neighbors and some of which do not, I will also drop it from the study.
 
 
 ```python
@@ -193,7 +193,7 @@ title=plt.title('Bay Islands Block Group')
 ![png]({{ site.baseurl }}/images/3-Spatial_Econonometric_Modeling_16_0.png)
 
 
-I remove these 3 block groups from the dataset and save it out as a new shapefile that I create an updated weights matrix from.
+I remove these 3 block groups from the dataset and export it as a new shapefile that I create an updated weights matrix from.
 
 
 ```python
@@ -232,7 +232,7 @@ print w.weights.values()[4]
 
 ## 3 - Exploratory Analysis
 
-Before running the initial regression models, there are a few other exploratory steps I want to take to make sure I understand the data. The first is a simple scatter plot of the outcome measure (rate of drunk incidents) against the main explanatory variable of interest (bar density). I use ```numpy``` to fit a quick regression line to add to the scatter plot along with the equation of the line. As you can see, there does appear to be a small positive replationship between these two variables (0.097). This means that an increase in 10 bars per square mile is associated with a increase in approximately 1 drunk accident per 1000 people. The question is whether or not this relationship is signficant, and if so, whether it will hold when I control for other block group characteristics, as well as the  underlying spatial structure of these variables.
+Before running the initial regression models, there are a few other exploratory steps I want to take to make sure I understand the data. The first is a simple scatter plot of the outcome measure (rate of drunk incidents) against the main explanatory variable of interest (bar density). I use ```numpy``` to fit a quick regression line to add to the scatter plot along with the equation of the line. As you can see, there does appear to be a small positive relationship between these two variables (0.097). This means that an increase in 10 bars per square mile is associated with an increase in approximately 1 drunk accident per 1000 people. The question is whether or not this relationship is significant, and if so, whether it will hold when I control for other block group characteristics, as well as the  underlying spatial structure of these variables.
 
 
 ```python
@@ -255,9 +255,9 @@ title=plt.title('Bar Density and Drunk Incident Rate Relationship')
 ![png]({{ site.baseurl }}/images/3-Spatial_Econonometric_Modeling_23_0.png)
 
 
-My next exploratory step is to check for spatial autocorrelation in my outcome measure. I map rates of drunk incidents below, and as you can see the spatial distribution of this variable is far from random - the whole eastern part of the city (especially around Market Street) appears to be a hotspot, whereas the western part of the city has much lower rates. A Global Moran's I statistic test for spatial autocorrelation and ranges from -1 (dispersed) to 1 (clumped). I run this test statistic below (the tool takes a vector of values and a weights object as its inputs). The Moran's coefficent is positive and highly signficant (0.384018, p-value=0.0) indicating that our outcome measure is indeed spatially autocorrelated.
+My next exploratory step is to check for spatial autocorrelation in my outcome measure. I map rates of drunk incidents below, and as you can see the spatial distribution of this variable is far from random - the whole eastern part of the city (especially around Market Street) appears to be a hotspot, whereas the western part of the city has much lower rates. A Global Moran's I statistic tests for spatial autocorrelation and ranges from -1 (dispersed) to 1 (clumped). I run this test statistic below (the tool takes a vector of values and a weights object as its inputs). The Moran's coefficient is positive and highly significant (0.384018, p-value=0.0) indicating that our outcome measure is indeed spatially autocorrelated.
 
-This in itself is not necessarily a problem. Simply including other covariates in the model as would be done in a standard OLS regression will control for some of this spatial pattern as areas with higher rates presumably have higher rates for some underlying reason that we are modeling. However, if we see spatial autocorrelation in the model residuals (after including our covariates), that indicates a problem and is a violation of the standard assumptions of OLS, which is that our errors are I.I.D. (independently and identically distributed).
+This in itself is not necessarily a problem. Simply including other covariates in the model, as would be done in a standard OLS regression, will control for some of this spatial pattern as areas with higher rates presumably have higher rates for some underlying reason that we are modeling. However, if we see spatial autocorrelation in the model residuals (after including our covariates), that indicates a problem and is a violation of the standard assumptions of OLS, which is that our errors are I.I.D. (independently and identically distributed).
 
 
 ```python
@@ -287,7 +287,7 @@ pd.Series(index=['Morans I','Z-Score','P-Value'],data=[mi.I, mi.z_norm, mi.p_nor
 
 
 
-Lastly, before running the initial model, I generate a correlation matrix, just to get a sense of how my variables are related to one another. Some more the more highly correlated varibles are not surprising - retail density and bar density, poverty and bar density, poverty and retail. The economic geographic theory behind these last two correlations is that there is an exclusionary effect in the immediate vicinity of wealthier areas, in which higher land rents prevent retail from establishing.
+Lastly, before running the initial model, I generate a correlation matrix, just to get a sense of how my variables are related to one another. Some of the more highly correlated variables are not surprising - retail density and bar density, poverty and bar density, poverty and retail. The economic geographic theory behind these last two correlations is that there is an exclusionary effect in the immediate vicinity of wealthier areas, in which higher land rents prevent retail from establishing.
 
 
 ```python
@@ -375,7 +375,7 @@ data[[YVar]+XVars].corr()
 
 ## 4 - OLS Regression
 
-Now I'm ready to run my initial OLS regression. I first have to convert the independent variable and the explantory variables into ```numpy``` arrays, which are the required input for ```pysal```. Looking at these initial results, we see that all of the covariates have positive well-supported relationships with the rate of drunk incidents. However, the Moran's coefficient is also highly signficant positive (0.22, p-value 0.0), which indicates that the model residuals have a spatial pattern to them that we are failing to control for. Failing to control for spatial autocorrelation tends cause an overstatement in confidence and increase the likelihood of a type II error. So the question will be, whether these relationships still hold when we do account for this underlying spatial pattern.
+Now I'm ready to run my initial OLS regression. I first have to convert the independent variable and the explanatory variables into ```numpy``` arrays, which are the required input for ```pysal```. Looking at these initial results, we see that all of the covariates have positive, well-supported relationships with the rate of drunk incidents. However, the Moran's coefficient is also highly significant positive (0.22, p-value 0.0), which indicates that the model residuals have a spatial pattern to them that we are failing to control for. Failing to control for spatial autocorrelation tends to cause an overstatement in confidence and increase the likelihood of a type II error. So the question will be, whether these relationships still hold when we do account for this underlying spatial pattern.
 
 
 ```python
@@ -436,14 +436,14 @@ pd.Series(index=['Morans I','Z-Score','P-Value'],data=[mi.I, mi.z_norm, mi.p_nor
 ### Determining the Appropriate Spatial Model to Use
 The high degree of autocorrelation indicates that we do indeed need to use a spatial model (if there wasn't any well-supported autocorrelation then we would probably be fine with the OLS). The next question is to decide which type of spatial regression model we should use. As mentioned earlier, there are two main categories of maximum likelihood spatial regression models to consider here - the spatial lag model and the spatial error mode. The first primarily addresses autocorrelation of the outcome measure and the second primarily addresses autocorrelation of the errors. 
 
-Fortunately, there are Lagrange Multiplier test statistics that help decide which model is more appropriate given the data. These are shown as output in the OLS regression above. The standard lag and error tests are both highly signficiant (although the lag one more so). This necessitates the consideration of the robust forms of the test, which provide a preference for the lag model (z-score of 16.93 vs 1.03). Therefore, I conclude that the spatial lag model is more appropriate and will continue with that approach.
+Fortunately, there are Lagrange Multiplier test statistics that help decide which model is more appropriate given the data. These are shown as output in the OLS regression above. The standard lag and error tests are both highly significant (although the lag one more so). This necessitates the consideration of the robust forms of the test, which provide a preference for the lag model (z-score of 16.93 vs 1.03). Therefore, I conclude that the spatial lag model is more appropriate and will continue with that approach.
 
 ## 5 - Spatial Lag Regression
-The results from the spatial lag model are shown below. As mentioned earlier, this flavor of spatial model includes a spatial lag of the outcome measure as an explantory variable (the last covariate listed in the results, "W_DrunkP1k"). All other covariates remain positive and significant although with the inclusion of the spatial term, all coefficients and standard error values decrease slightly in magnitude. This is not surprising is what generally happens when controlling for spatial autocorrelation. The spatial term is also positive and well-supported which is what we would expect since the residuals from the OLS regression were positively autocorrelated. 
+The results from the spatial lag model are shown below. As mentioned earlier, this flavor of spatial model includes a spatial lag of the outcome measure as an explanatory variable (the last covariate listed in the results, "W_DrunkP1k"). All other covariates remain positive and significant although with the inclusion of the spatial term, all coefficients and standard error values decrease slightly in magnitude. This is not surprising and is what generally happens when controlling for spatial autocorrelation. The spatial term is also positive and well-supported which is what we would expect since the residuals from the OLS regression were positively autocorrelated. 
 
 The r-squared value increases in the spatial model over the OLS model indicating that it is a better fit. Lastly, I generate model residuals and run a Moran's test on them and see that there is no longer a well-supported spatial pattern to them (coefficient: 0.003, p-value: 0.41) - the inclusion of the spatial lag term explains away the residual autocorrelation.
 
-In this particular example, there is no dramatic change in coefficient estimates or signficance between the OLS and the spatial lag model, but this is not always the case.
+In this particular example, there is no dramatic change in coefficient estimates or significance between the OLS and the spatial lag model, but this is not always the case.
 
 
 ```python
@@ -495,9 +495,9 @@ pd.Series(index=['Morans I','Z-Score','P-Value'],data=[mi.I, mi.z_norm, mi.p_nor
 ## Interpretation of Coefficients and the Spatial Multiplier
 
 ### Spatial Spillover
-The initial OLS model estimated the effect due to bar density to be 0.032. Controlling for other block group estimates reduced the estimate of this effect to 0.024. This 25% reduction in measured effect size after controlling for spatial autoregression is signficant and would have been a biased estimate had we not controlled for it. 
+The initial OLS model estimated the effect due to bar density to be 0.032. Controlling for other block group estimates reduced the estimate of this effect to 0.024. This 25% reduction in measured effect size after controlling for spatial autoregression is significant and would have been a biased estimate had we not controlled for it. 
 
-However, coefficients in a regression model need to be interpreted differently when the model includes a spatial lag as an explanatory variable. In a standard linear regression model, a change in the value of a covariate in a given observation only affects the outcome in that observation. This is not the case in a spatial lag model. With this model specification, the value of Y is not only dependent on the value of X at that location, but also of the X at neighboring locations. The degree to which Y depends on neighboring X's is captured in the magnitude of spatial lag term (W_DrunkP1k in this analysis). When this term is positive (as it is in our model), there is an agglomerative spatial effect that means that the total effect of a change in any of our explantory variables is greater than what is measured by our coefficients because our coefficients do not take into account this spatial spillover effect. The size of this effect can be measured and depends on the size of the spatial term. The size of the total effect can be estimated as such (Kim et al. 2003)
+However, coefficients in a regression model need to be interpreted differently when the model includes a spatial lag as an explanatory variable. In a standard linear regression model, a change in the value of a covariate in a given observation only affects the outcome in that observation. This is not the case in a spatial lag model. With this model specification, the value of Y is not only dependent on the value of X at that location, but also of the X at neighboring locations. The degree to which Y depends on neighboring X's is captured in the magnitude of spatial lag term (W_DrunkP1k in this analysis). When this term is positive (as it is in our model), there is an agglomerative spatial effect that means that the total effect of a change in any of our explanatory variables is greater than what is measured by our coefficients because our coefficients do not take into account this spatial spillover effect. The size of this effect can be measured and depends on the size of the spatial term. The size of the total effect can be estimated as such (Kim et al. 2003)
 
 $$Total Effect = \frac{\beta_h}{1-\rho}$$
 
@@ -505,7 +505,7 @@ In then follows that the total effect consists of two parts - one due to the **d
 
 Below, I create a dataframe that pulls the direct effect estimations from the model and calculates the indirect and total effects. As you can see, in all cases the total effect is quite a bit larger (almost twice the magnitude) of the direct effect output. 
 
-When we consider the spatial spillover effect the estimate for bar density increases from 0.024 to 0.045. This now implies that after controlling for block group characteristics and the spatial spillover effect, an increase in 10 bars per square mile is associated with approximately 5 drunk accidents per 10,000 people.
+When we consider the spatial spillover effect, the estimate for bar density increases from 0.024 to 0.045. This now implies that after controlling for block group characteristics and the spatial spillover effect, an increase in 10 bars per square mile is associated with approximately 5 drunk accidents per 10,000 people.
 
 This is not to say that the original estimates are wrong. These estimates are just a different interpretation that also includes the interaction among spatial units and gives us the total average effect over our study area - likely a more useful interpretation. 
 
@@ -579,7 +579,7 @@ full_eff
 ### Converting Parameter Estimates to Elasticities
 While I have interpreted the coefficient for bar density above, it's still hard to get a sense of the magnitude of this effect. We know the increase in drunk rate expected from an increase in bar density, but without knowing the scaling of the underlying data, we really have no idea how big of an effect that really is. How big of an increase is 10 bars per square mile? And how big of an increase in crime is 5 incidents per 10,000? Well, that requires an understanding of the number of bars and crimes that there are in an average block group.
 
-I think it's sometimes usefull to convert parameter estimates to elasticities to make them easier to interpret. Below, I calculate the expected % increase from the mean drunk incident rate that we can expect from an 10% increase from mean bar density. Note that I'm using the "Total Effect" coefficient that takes into account the spatial multiplier. Converting to elasticities, we now see that a 10% increase from mean bar density is associated with a 1.9% increase from mean assault rate. To me, this is a much more digestable way to undertand the effect sizes.
+I think it's sometimes useful to convert parameter estimates to elasticities to make them easier to interpret. Below, I calculate the expected % increase from the mean drunk incident rate that we can expect from an 10% increase from mean bar density. Note that I'm using the "Total Effect" coefficient that takes into account the spatial multiplier. Converting to elasticities, we now see that a 10% increase from mean bar density is associated with a 1.9% increase from mean assault rate. To me, this is a much more digestible way to understand the effect sizes.
 
 
 ```python
@@ -598,7 +598,7 @@ change_in_out_pct
 
 
 ## Conclusion
-I hope this was a helpful introduction to spatial econometric models and how that can be run using the ```pysal``` library in Python. I think that these are really important concepts to consider when modeling or analyzing any phenomena that have a spatial component.
+I hope this was a helpful introduction to spatial econometric models and how they can be run using the ```pysal``` library in Python. I think that these are really important concepts to consider when modeling or analyzing any phenomena that have a spatial component.
 
 If I have time, I hope to put together a post that uses a more advanced non-linear spatial model such as a spatial poisson or a perhaps a panel study that looks at temporal patterns as well.
 
