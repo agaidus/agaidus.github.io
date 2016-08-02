@@ -25,7 +25,7 @@ This blog is how I share some interesting things that I learn as I continue this
 ## More Info
 - [Email](mailto:andrew.gaidus@gmail.com)
 - [GitHub](https://github.com/agaidus)
-- [Resume](/images/Gaidus_Resume.pdf)
+- [Resume](/Gaidus_Resume_0816.pdf)
 - [LinkedIn](https://www.linkedin.com/in/andrew-gaidus-59606124)
 - [Publications](https://www.researchgate.net/profile/Andrew_Gaidus)
 
