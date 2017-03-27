@@ -3,6 +3,8 @@ layout: post
 title: Analyzing Race Results Part 2 - Analyzing and Plotting Data
 ---
 
+![cc]({{ site.baseurl }}/images/intro_plot.png)
+
 In my [previous post](http://andrewgaidus.com/Analyzing_Race_Results_Part_1_Web_Scraping/), I used the ```BeautifulSoup``` Python library to scrape HTML data from the web, clean it, and read it into ```Pandas```. The data that I use are the [2015](http://www.empirerunners.com/results/empireopen/eo15.html) and [2016](http://www.empirerunners.com/results/empireopen/eo16.html) results from the Empire Open Cross Country Meet - a 3.43 mile race that my running club hosts every year in Santa Rosa. 
 
 Now I have a cleaned dataset of 2 years of race results parsed from HTML. In this post I will actually analyze this data a bit and generate some interesting stats and plots. I'll use the grouping operations in ```Pandas``` to compare team performances across years; ```Matplotlib``` and its wrapper ```seaborn``` to make plots that visualize these comparisons; and ```Statsmodels``` to build a basic regression model that can be used to control for age and gender when comparing times. 
@@ -206,7 +208,7 @@ g.fig.subplots_adjust(top=.85)
 ```
 
 
-![cc]({{ site.baseurl }}/images/Analyzing_Race_Results_Part_2_15_1.png)
+![cc]({{ site.baseurl }}/images/Analyzing_Race_Results_Part_2_15_2.png)
 
 
 While ```seaborn``` will fit and plot a regression line, you can't actually obtain the results of that regression. For this I use ```statsmodels```, a statistics module that has a formula framework similar to ```R``` and also interfaces really nicely with ```Pandas```. 
@@ -331,6 +333,5 @@ print top_team
     4   44      M 00:20:44  6:02/M
     
 
-    C:\Anaconda2\lib\site-packages\ipykernel\__main__.py:2: PerformanceWarning: indexing past lexsort depth may impact performance.
-      from ipykernel import kernelapp as app
+  
     
