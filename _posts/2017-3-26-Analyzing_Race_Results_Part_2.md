@@ -203,12 +203,12 @@ The ```lmplot``` method also fits a linear regression model and plots the line a
 
 ```python
 g=sns.lmplot('Age', 'Minutes', data=df, hue='Gender', order=2, palette='dark', col='Year')
-t=plt.suptitle('Empire Open 5K: Results by Age and Gender', size=15)
+t=plt.suptitle('Empire Open 3.43 Mile Race: Finish Times by Age and Gender', size=15)
 g.fig.subplots_adjust(top=.85)
 ```
 
 
-![cc]({{ site.baseurl }}/images/Analyzing_Race_Results_Part_2_15_2.png)
+![cc]({{ site.baseurl }}/images/Analyzing_Race_Results_Part_2_15_0.png)
 
 
 While ```seaborn``` will fit and plot a regression line, you can't actually obtain the results of that regression. For this I use ```statsmodels```, a statistics module that has a formula framework similar to ```R``` and also interfaces really nicely with ```Pandas```. 
