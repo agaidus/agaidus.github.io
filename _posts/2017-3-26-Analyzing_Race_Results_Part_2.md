@@ -208,7 +208,7 @@ g.fig.subplots_adjust(top=.85)
 ```
 
 
-![cc]({{ site.baseurl }}/images/Analyzing_Race_Results_Part_2_15_0.png)
+![cc]({{ site.baseurl }}/images/Analyzing_Race_Results_Part_2_17_0.png)
 
 
 While ```seaborn``` will fit and plot a regression line, you can't actually obtain the results of that regression. For this I use ```statsmodels```, a statistics module that has a formula framework similar to ```R``` and also interfaces really nicely with ```Pandas```. 
