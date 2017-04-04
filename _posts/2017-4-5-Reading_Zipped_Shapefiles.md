@@ -3,7 +3,7 @@ layout: post
 title:  Reading Shapefiles from a URL into GeoPandas
 ---
 
-![cc]({{ site.baseurl }}/images/Reading_Zipped_Shapefiles_15_0.png)
+![cc]({{ site.baseurl }}/images/NJ_Counties_small.png)
 
 
 Shapefiles are probably the most commonly used vector geospatial data format. However, because a single Shapefile consists of multiple files (at least 3 and up to 15) they are often transferred as a single zip file. In this post I demonstrate how to read a zipped shapefile from a server into a GeoPandas GeoDataFrame (with coordinate reference system information), all in memory.
@@ -139,5 +139,5 @@ plt.savefig("NJ_Counties.png", bbox_inches='tight')
 ```
 
 
-![cc]({{ site.baseurl }}/images/Reading_Zipped_Shapefiles_15_0.png)
+![cc]({{ site.baseurl }}/images/NJ_Counties.png)
 
