@@ -1,6 +1,6 @@
 ---
 layout: post
-title: # Reading Shapefiles from a URL into GeoPandas
+title:  Reading Shapefiles from a URL into GeoPandas
 ---
 
 ![cc]({{ site.baseurl }}/images/Reading_Zipped_Shapefiles_15_0.png)
