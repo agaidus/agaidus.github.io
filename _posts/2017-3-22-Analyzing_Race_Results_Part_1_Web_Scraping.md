@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Analyzing Race Results Part 1 - Web Scraping
+title: Race Results Part 1 - Web Scraping
 ---
 
 I enjoyed this analysis a lot, mainly because I found the data really fun to play with. It started as a way to learn how to scrape HTML data from a website, but then I decided that it would also be useful to dig a bit deeper intothe data and do a bit more analyzing and visualizing. It also provided a good opportunity to make use of various scientific Python libraries for data wrangling, data visualization, and statistical modeling.
@@ -19,7 +19,7 @@ The analysis can be broken up into the following steps:
 
 In this initial post, I will focus on the first aspect - obtaining and cleaning raw data from the web.
 
-An IPython notebook of my code can be downloaded [here](https://github.com/agaidus/web_scraping_race_results/blob/master/Analyzing_Race_Results_Part_1_Web_Scraping.ipynb) and part 2 of this post can be viewed [here](http://andrewgaidus.com/Analyzing_Race_Results_Part_2/)
+An Jupyter notebook of my code can be downloaded [here](https://github.com/agaidus/web_scraping_race_results/blob/master/Analyzing_Race_Results_Part_1_Web_Scraping.ipynb) and part 2 of this post can be viewed [here](http://andrewgaidus.com/Analyzing_Race_Results_Part_2/).
 
 
 ```python
