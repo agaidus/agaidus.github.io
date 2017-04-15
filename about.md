@@ -5,7 +5,7 @@ permalink: /about/
 published: true
 ---
 
-I am a data scientist with a background in quantitative policy analysis and GIS. I am particularly interested in spatial data systems and analysis; and am an enthusiastic user of Python for data science and open-source GIS. I grew up on the East Coast where I also attended college (Williams) and graduate school (Yale). The Bay Area is now home.
+I am a data scientist with a background in quantitative policy analysis and GIS. I am particularly interested in geospatial data and analysis; and am an enthusiastic user of Python for data science and open-source GIS. I grew up on the East Coast where I also attended college (Williams) and graduate school (Yale). The Bay Area is now home.
 
 I currently work at a national public health research institute where I manage large-scale spatial data systems and conduct statistical analyses that measure spatial patterns in various health outcomes. I'm passionate about using data (particularly that which can be displayed on a map) to understand and solve complex problems.
 
@@ -14,7 +14,7 @@ On the weekends, I can generally be found in the Sierra Nevada camping, climbing
 ## Motivation for this site
 Being both a 'data scientist' and a 'GIS analyst', I initially found myself working in two disconnected worlds. Like most GIS professionals, I was trained in ArcGIS. In a typical data science project, I would use ArcPy for the spatial aspects and the SciPy stack of Python packages for the non-spatial data wrangling and analysis. I think there is a better approach that offers a more seamless integration between these two worlds. 
 
-Somewhere along the way, I discovered the set of open source spatial packages in Python - Fiona, Shapely, pyproj, GeoPandas, PySAL - and my work instantly became more efficient and my overall understanding of GIS concepts much richer. ArcPy and other desktop GIS applications are wonderful for doing GIS. However, for the person who is simulatenously doing spatial and non-spatial data analysis, I think that there are a number of advantages to using SciPy along with the set of open source spatial packages:
+Somewhere along the way, I discovered the set of open source spatial packages in Python - OGR/GDAL, Fiona, Rasterio, Shapely, pyproj, GeoPandas, PySAL - and my work instantly became more efficient and my overall understanding of GIS concepts much richer. ArcPy and other desktop GIS applications are wonderful for doing GIS. However, for the person who is simulatenously doing spatial and non-spatial data analysis, I think that there are a number of advantages to using SciPy along with the set of open source spatial packages:
 
 1. **Pythonic** - geographic data and computations use standard Python conventions and interface nicely with SciPy
 2. **Open source** - free and with a great community of developers
