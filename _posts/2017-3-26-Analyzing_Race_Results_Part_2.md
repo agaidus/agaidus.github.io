@@ -9,7 +9,7 @@ In my [previous post](http://andrewgaidus.com/Analyzing_Race_Results_Part_1_Web_
 
 Now I have a cleaned dataset of 2 years of race results parsed from HTML. In this post I will actually analyze this data a bit and generate some interesting stats and plots. I'll use the grouping operations in ```Pandas``` to compare team performances across years; ```Matplotlib``` and its wrapper ```seaborn``` to make plots that visualize these comparisons; and ```Statsmodels``` to build a basic regression model that can be used to control for age and gender when comparing times. 
 
-An Jupyter notebook of my code can be downloaded [here](https://github.com/agaidus/web_scraping_race_results/blob/master/Analyzing_Race_Results_Part_2.ipynb).
+A Jupyter notebook of my code can be downloaded [here](https://github.com/agaidus/web_scraping_race_results/blob/master/Analyzing_Race_Results_Part_2.ipynb).
 
 
 ```python

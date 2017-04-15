@@ -19,7 +19,7 @@ The analysis can be broken up into the following steps:
 
 In this initial post, I will focus on the first aspect - obtaining and cleaning raw data from the web.
 
-An Jupyter notebook of my code can be downloaded [here](https://github.com/agaidus/web_scraping_race_results/blob/master/Analyzing_Race_Results_Part_1_Web_Scraping.ipynb) and part 2 of this post can be viewed [here](http://andrewgaidus.com/Analyzing_Race_Results_Part_2/).
+A Jupyter notebook of my code can be downloaded [here](https://github.com/agaidus/web_scraping_race_results/blob/master/Analyzing_Race_Results_Part_1_Web_Scraping.ipynb) and part 2 of this post can be viewed [here](http://andrewgaidus.com/Analyzing_Race_Results_Part_2/).
 
 
 ```python
