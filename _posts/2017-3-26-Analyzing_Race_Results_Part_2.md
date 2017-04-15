@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Race Results Part 2 - Analyzing and Plotting Data
+title: Race Results Part 2 - Analyzing and Visualizing Finish Times
 ---
 
 ![cc]({{ site.baseurl }}/images/intro_plot.png)
