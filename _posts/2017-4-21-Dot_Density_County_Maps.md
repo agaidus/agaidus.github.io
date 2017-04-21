@@ -203,4 +203,3 @@ gen_count_dot_density_map('Denver County, CO', pts_per_person=100)
 
 
 ![cc]({{ site.baseurl }}/images/Dot_Density_County_Maps_21_1.png)
-
