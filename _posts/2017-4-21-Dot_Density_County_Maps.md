@@ -145,10 +145,6 @@ The function then returns a labeled map of point densities colored by race and o
 
 I will now call this function on several counties across the U.S. that contain major cities as a way to compare population patterns. 
 
-Alameda County appears to be pretty diverse although there are certainly patterns to the population distributions. In general, most of the county's population is in the eastern part of the county, which runs from Berkeley down to Fremont. The western part of the county has the large suburbs of Pleasanton and Livermore, which is separated from the eastern part of the city by hilly open space.
-
-Looking by race we see that there are definite clusters. The white population is largely located in Berkeley and in the hills above Oakland; the Black population is primarily in West Oakland and East Oakland; the Hispanic population is mostly in the San Leandro / Hayward area; and the Asian population is pretty spread out with a pretty large population near Union City and Fremont as well as clusters in Oakland and Berkeley.
-
 
 ```python
 gen_count_dot_density_map('Alameda County, CA', pts_per_person=200)
@@ -157,10 +153,9 @@ gen_count_dot_density_map('Alameda County, CA', pts_per_person=200)
 
 ![cc]({{ site.baseurl }}/images/Dot_Density_County_Maps_13_1.png)
 
+Alameda County appears to be pretty diverse although there are certainly patterns to the population distributions. In general, most of the county's population is in the eastern part of the county, which runs from Berkeley down to Fremont. The western part of the county has the large suburbs of Pleasanton and Livermore, which is separated from the eastern part of the city by hilly open space.
 
-Perhaps even more interesting is Cook County, IL, which contains Chicago. Chicago is [known](https://fivethirtyeight.com/features/the-most-diverse-cities-are-often-the-most-segregated/) for being one of the most diverse, but also one of the most racially segregated cities in the country. This map makes that point very clearly. I am not familiar enough with Chicago's neighborhoods to describe this map, but it is very clear that they vary in terms of their racial composition.
-
-
+Looking by race we see that there are definite clusters. The white population is largely located in Berkeley and in the hills above Oakland; the Black population is primarily in West Oakland and East Oakland; the Hispanic population is mostly in the San Leandro / Hayward area; and the Asian population is pretty spread out with a pretty large population near Union City and Fremont as well as clusters in Oakland and Berkeley.
 
 
 
@@ -171,7 +166,8 @@ gen_count_dot_density_map('Cook County, IL')
 
 ![cc]({{ site.baseurl }}/images/Dot_Density_County_Maps_15_1.png)
 
-New York City is another one that I'm a bit more familiar with, and as you can see it too has clear population patterns. The northern part of Manhattan around Washington Heights and Inwood is largely Hispanic; Harlem is primarily a Black neighborhood; the Upper East and West Sides (around Central Park) are primarily White; and there is a large Asian population around Chinatown.
+Perhaps even more interesting is Cook County, IL, which contains Chicago. Chicago is [known](https://fivethirtyeight.com/features/the-most-diverse-cities-are-often-the-most-segregated/) for being one of the most diverse, but also one of the most racially segregated cities in the country. This map makes that point very clearly. I am not familiar enough with Chicago's neighborhoods to describe this map, but it is very clear that they vary in terms of their racial composition.
+
 
 
 ```python
@@ -182,7 +178,9 @@ gen_count_dot_density_map('New York County, NY')
 ![cc]({{ site.baseurl }}/images/Dot_Density_County_Maps_17_1.png)
 
 
-Brooklyn too appears to have very clustered population groups.
+
+New York City is another one that I'm a bit more familiar with, and as you can see it too has clear population patterns. The northern part of Manhattan around Washington Heights and Inwood is largely Hispanic; Harlem is primarily a Black neighborhood; the Upper East and West Sides (around Central Park) are primarily White; and there is a large Asian population around Chinatown.
+
 
 
 ```python
@@ -190,16 +188,19 @@ gen_count_dot_density_map('Kings County, NY', pts_per_person=200)
 ```
 
 
-
 ![cc]({{ site.baseurl }}/images/Dot_Density_County_Maps_19_1.png)
 
+Brooklyn too appears to have very clustered population groups.
 
-And lastly, I plot Denver, which appears to have a relatively large Hispanic population that is located mainly in the western part of the city.
+
+
 
 
 ```python
 gen_count_dot_density_map('Denver County, CO', pts_per_person=100)
 ```
 
-
 ![cc]({{ site.baseurl }}/images/Dot_Density_County_Maps_21_1.png)
+
+
+And lastly, I plot Denver, which appears to have a relatively large Hispanic population that is located mainly in the western part of the city.
