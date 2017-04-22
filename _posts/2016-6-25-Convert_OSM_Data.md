@@ -3,6 +3,9 @@ layout: post
 title: Extracting and Converting OpenStreetMap data in Python
 ---
 
+![png]({{ site.baseurl }}/images/Convert_OSM_Data_9_0.png)
+
+
 OpenStreetMap is an open source collaborative mapping project that has tons of really valuable and freely available data. However, in order to use it in most applications, it needs to be converted to another format. If working with large amounts of data, the best approach is to use a tool such as ```imposm``` or ```osm2pgsql```, both of which first import the data into a PostgreSQL/PostGIS database. From there the data can be queried or exported. However, if working with smaller amounts of data where a spatial database is not necessary, there is a quick and easy way to extract data from an OSM file (XML based) using a driver in the Python OGR library. I demonstrate this approach below using a sample of data in my neighborhood in San Francisco.
 
 A Jupyter notebook containing my code can be downloaded on my github [here](https://github.com/agaidus/Converting_OSM_Data/blob/master/Convert_OSM_Data.ipynb).

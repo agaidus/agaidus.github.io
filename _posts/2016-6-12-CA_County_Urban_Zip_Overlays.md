@@ -3,6 +3,8 @@ layout: post
 title: County Urban Populations from Zip Classifications
 ---
 
+![png]({{ site.baseurl }}/images/CA_County_Urban_Zip_Overlays_18_0.png)
+
 I have a shapefile of California zip codes and a shapefile of California counties. I am given a set of rules that use housing unit density to classify zip codes into rural, urban, or exurban zip codes. The goal is to calculate the proportion of each county's population that lives within each of these zip code classifications.
 
 I demonstrate how to do this below because I think it is an example that makes good use of the overlaying and aggregating features in Pandas/Geopandas and demonstrates how they can be used to answer this question quite easily.

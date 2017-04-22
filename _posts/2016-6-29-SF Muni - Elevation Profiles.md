@@ -2,7 +2,7 @@
 layout: post
 title: The Hilliest Muni Route in San Francisco
 ---
-![cc]({{ site.baseurl }}/images/cable_car.jpg)
+![png]({{ site.baseurl }}/images/SF%20Muni%20-%20Elevation%20Profiles_60_0.png)
 
 ## Introduction
 

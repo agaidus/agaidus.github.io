@@ -3,6 +3,9 @@ layout: post
 title: Editing Geographic Features in Python
 ---
 
+![png]({{ site.baseurl }}/images/Shapely_Geometries_Topological_Rules_18_0.png)
+
+
 One major benefit that I find working in Python for spatial analyses is the ability to create, customize, and define tools that are very specific to the required spatial or analytical task. Rather than being constrained to the set of tools defined by a GIS software, when working in Python I can create a function that's very specific to the task of a given project. 
 
 I recently had a request from a colleague that required some editing and manipulation of geographic features in order to achieve the desired output. Essentially, we needed to divide the city of Berkeley into two geographic areas separated by a street, which does not extend the entire length of the city boundary (the area East of Sacramento Street was to be one sample area and the area West of Sacramento street was to be another sample area).

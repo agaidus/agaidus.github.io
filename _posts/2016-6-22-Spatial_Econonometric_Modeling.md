@@ -2,6 +2,10 @@
 layout: post
 title: Modeling San Francisco Crime Rates - A Spatial Econometric Approach
 ---
+
+![png]({{ site.baseurl }}/images/3-Spatial_Econonometric_Modeling_23_0.png)
+
+
 In the following post, I walk through the steps required to build, evaluate, and interpret spatial regression models in Python. I'll point out that this post ended up being a lot longer than I initially thought it would be. However, it turned out to be a really useful exercise for me in keeping these methods and tools straight in my head. I hope it's beneficial to someone else as well!
 
 I start with some background on maximum likelihood spatial regression models and then use the Python library ```pysal``` to implement them. Based on the data I found freely available, I have decided to do an analysis of crime rates within block groups in San Francisco. More specifically, I look to see if police incidents related to "drunkenness" (an official crime category in the SF Police data) occur at a higher rate in areas that have a higher density of bars. This is not unlike the types of analyses I have produced for co-authored [papers](https://www.researchgate.net/profile/Andrew_Gaidus), although the models presented here are simpler in that they build directly off of the standard OLS regression.

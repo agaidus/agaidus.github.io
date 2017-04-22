@@ -3,6 +3,9 @@ layout: post
 title: Querying PostgreSQL / PostGIS Databases in Python
 ---
 
+![png]({{ site.baseurl }}/images/Build_Query_Spatial_Database_24_1.png)
+
+
 In the following post, I show how to build a PostgreSQL relational database with the PostGIS extension that supports spatial databases. I'll use the ```psycopg2``` Python module to access the database and import data, manipulate data, make a query, and then extract the data. I do a lot of data wrangling, analysis, and visualization using Python and find it really nice and efficient to be able to access and query SQL databases within the same environment!
 
 In this example I will perform simple spatial query. This methodology is much more efficient with large datasets than using ```Shapely``` or ```Geopandas``` to make spatial queries because the entire dataset does not have to be loaded into memory and the entire dataset does not need to be searched when a spatial query is made. Spatial databases uses spatial indices to optimize spatial queries. A spatial index is efficient because rather than indexing the geometry directly, it calculates the minimum bounding rectangle for each geometry, and indexes that bounding box. When a query is made, the database first identifies the potentially matching records using the bounding rectangles stored in the spatial index and then loads each potential geometry into memory to check it.
