@@ -5,20 +5,23 @@ title: Creating Dot Density Maps with Census Data
 
 ![cc]({{ site.baseurl }}/images/Dot_Density_County_Maps_15_1.png)
 
-The [choropleth map](https://en.wikipedia.org/wiki/Choropleth_map) is probably the most common way of visualizing data variation over geographic space. In a choropleth map, areas are shaded proportional to their value, providing an easy way of identifying variability within a region. Below, is an example, of a choropleth map showing median household income by Census Tract in Alameda County, CA.
+I work with Census data a lot in my work - when modeling public health problems, it is essential to in some way control for underlying demographic and socioeconomic characteristics of a place. I find it really useful to map and visualize this data, prior to modeling it, as a way to better understand the study area.
+
+The [choropleth map](https://en.wikipedia.org/wiki/Choropleth_map) is probably the most common way of visualizing data variation over geographic space. In a choropleth map, areas are shaded proportional to their value, providing a way of identifying variability within a region. Below, is an example of a choropleth map showing median household income by Census Tract in Alameda County, CA.
 
 ![cc]({{ site.baseurl }}/images/Dot_Density_County_Maps_7_0.png)
 
-However, certain types of data (especially those which continously vary in concentration over space), can often be more clearly presented in the form of a [dot density map](https://en.wikipedia.org/wiki/Dot_distribution_map). Dot density maps rely on a visual scattering of points to show spatial patterns that represent concentrations of subjects within a given area. The data for a dot density map can be modeled using a randomized point-in-polygon algorithm that generates a number of points proportional to the value of interest.
+However, certain types of data (especially those which continously vary in concentration over space), can often be more clearly presented in the form of a [dot density map](https://en.wikipedia.org/wiki/Dot_distribution_map). Dot density maps rely on a visual scattering of points to show spatial patterns that represent concentrations of subjects within a given area. The data for a dot density map are modeled using a randomized point-in-polygon algorithm that generates a number of points proportional to the value of interest.
 
-The purpose of this post is two-fold:
-1. Demonstrate how to extract Census data (both geographic boundaries and demographic data). In a [previous post](http://andrewgaidus.com/Reading_Zipped_Shapefiles/) I used Python to read geographic data from a website URL directly into memory. In this post, I will use this in conjunction with the Census API to extract data that can be matched to these geographies.
+I hope to accomplish the following things in this post:
+1. Demonstrate how to read Census data (both geographic boundaries and demographic data) into Python. In a [previous post](http://andrewgaidus.com/Reading_Zipped_Shapefiles/) I used Python to read geographic data from a website URL directly into memory. In this post, I will use this in conjunction with the Census API to extract data that can be matched to these geographies.
 
-2. Demonstrate how geospatial tools in Python can be used to create dot density maps from scratch.
+2. Demonstrate how open source geospatial tools in Python can be used to implement the pre-processing steps required to create dot-density maps.
 
-Ultimately, I will use these tools to create a set of figures that provide an easy way to visualize population distributions within a county by race and ethnicity.  
+3. Create a set of interesting figures that allow for a comparison of populations within a given county. In this example, I map distributions by race and ethnicity as a way of visualizing clusters of population groups. The idea for this actually came from a [FiveThirtyEight post](https://fivethirtyeight.com/features/the-most-diverse-cities-are-often-the-most-segregated/), which uses similar maps to argue that 
+the most diverse cities are are often the most segregated.
 
-In this post, I will focus less on the programming specifics and more on the general concepts and figures. For the purpose of this exercise, I wrote a Python module called ```census mapper``` that contains the functions that I use for (1) extracting census geographic and demographic data, (2) implementing the random point in polygon algorithm needed to create a dot-density map, and (3) actually plotting the data. The [code](https://github.com/agaidus/census_data_extraction/blob/master/census_mapper.py) for these functions can be found on my [GitHub](https://github.com/agaidus/census_data_extraction). 
+I focus more on general concepts and figures in this post, rather than the programming specifics. For the purpose of this exercise, I wrote a Python module called ```census mapper``` that contains the functions that I use for (1) extracting census geographic and demographic data, (2) implementing the random point in polygon algorithm needed to create a dot-density map, and (3) actually plotting the data. The [code](https://github.com/agaidus/census_data_extraction/blob/master/census_mapper.py) for these functions can be found on my [GitHub](https://github.com/agaidus/census_data_extraction). 
 
 Note that I will be working with the Census data at the block group level, because this is the most finely-grained geography for which demographic data is available. As a size reference, block groups are defined to have between 600 and 3,000 people. Also, I will be using the [2015 American Community Survey](https://www.census.gov/programs-surveys/acs/) (ACS) 5-Year Averages as my Census Demographic data source. The ACS is an ongoing survey that provides data estimates between the Decennial Census. The 2015 5-Year Averages are the most current data that can be obtained at the block group level. 
 
