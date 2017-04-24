@@ -156,7 +156,7 @@ gen_count_dot_density_map('Alameda County, CA', pts_per_person=200)
 
 ![cc]({{ site.baseurl }}/images/Dot_Density_County_Maps_13_1.png)
 
-Alameda County appears to be pretty diverse although there are certainly patterns to the population distributions. In general, most of the county's population is in the eastern part of the county, which runs from Berkeley down to Fremont. The western part of the county has the large suburbs of Pleasanton and Livermore, which is separated from the eastern part of the city by hilly open space.
+Alameda County appears to be pretty diverse although there are certainly patterns to the population distributions. In general, most of the county's population is in the western part of the county, which runs from Berkeley down to Fremont. The eastern part of the county has the large suburbs of Pleasanton and Livermore, which is separated from the western side by hilly open space.
 
 Looking by race we see that there are definite clusters. The white population is largely located in Berkeley and in the hills above Oakland; the Black population is primarily in West Oakland and East Oakland; the Hispanic population is mostly in the San Leandro / Hayward area; and the Asian population is pretty spread out with a pretty large population near Union City and Fremont as well as clusters in Oakland and Berkeley.
 
@@ -182,8 +182,7 @@ gen_count_dot_density_map('New York County, NY')
 
 
 
-New York City is another one that I'm a bit more familiar with, and as you can see it too has clear population patterns. The northern part of Manhattan around Washington Heights and Inwood is largely Hispanic; Harlem is primarily a Black neighborhood; the Upper East and West Sides (around Central Park) are primarily White; and there is a large Asian population around Chinatown.
-
+New York City is a place that I'm a bit more familiar with, and as you can see it too has clear population patterns. The northern part of Manhattan around Washington Heights and Inwood is largely Hispanic; Harlem is primarily a Black neighborhood; the Upper East and West Sides (around Central Park) are primarily White; and there is a large Asian population around Chinatown.
 
 
 ```python
