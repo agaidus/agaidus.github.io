@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Creating Dot Density Maps with Census Data
+title: Visualizing Population Distributions with Dot Density Maps 
 ---
 
 ![cc]({{ site.baseurl }}/images/Dot_Density_County_Maps_15_1.png)
