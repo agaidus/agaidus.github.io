@@ -5,9 +5,9 @@ permalink: /about/
 published: true
 ---
 
-I am a data scientist with a background in quantitative policy analysis and GIS. I am particularly interested in geospatial data and analysis; and am an enthusiastic user of Python for data science and open-source GIS. I grew up on the East Coast where I also attended college (Williams) and graduate school (Yale). The Bay Area is now home.
+I am a quantitative analyst with a background in policy analysis and GIS. I am particularly interested in geospatial data and analysis; and am an enthusiastic user of Python for data science and open-source GIS. I grew up on the East Coast where I also attended college (Williams) and graduate school (Yale). The Bay Area is now home.
 
-I currently work at a national public health research institute where I manage large-scale spatial data systems and conduct statistical analyses that measure spatial patterns in various health outcomes. I'm passionate about using data (particularly that which can be displayed on a map) to understand and solve complex problems.
+I currently work as a Marketing Analyst at Metromile, an insurance technology start-up. Prior to that, I spent 4 years working as a quantitative researcher at national public health research institute where I studied spatial-temporal patterns in various health outcomes. I'm passionate about using data (particularly that which can be displayed on a map) to understand and solve complex problems.
 
 On the weekends, I can generally be found in the Sierra Nevada camping, climbing, running, and hiking. 
 
